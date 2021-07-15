@@ -14,11 +14,11 @@ const setUser = (user) => {
   };
 };
 
-const removeUser = () => {
-  return {
-    type: REMOVE_USER,
-  };
-};
+// const removeUser = () => {
+//   return {
+//     type: REMOVE_USER,
+//   };
+// };
 
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;

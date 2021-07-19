@@ -9,7 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     capacity: DataTypes.INTEGER
   }, {});
   Opportunity.associate = function(models) {
-    // associations can be defined here
+    Opportunity.belongsTo(models.Location, { foreignKey: 'locationId' });
+
+    Opportunity.hasMany(models.Signup, { foreignKey: 'oppId' });
+
+    Opportunity.belongsTo(models.User, { foreignKey: 'nonprofitId' });
+
+    Opportunity.belongsTo(models.Category, { foreignKey: 'categoryId' });
   };
   return Opportunity;
 };

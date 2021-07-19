@@ -9,13 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nonprofitId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Users' }
       },
       locationId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Locations' }
       },
       categoryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Categories' }
       },
       oppName: {
         type: Sequelize.STRING(255),
@@ -30,11 +33,9 @@ module.exports = {
         allowNull: false
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

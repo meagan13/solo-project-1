@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     long: DataTypes.DECIMAL
   }, {});
   Location.associate = function(models) {
-    // associations can be defined here
+    Location.hasMany(models.Opportunity, { foreignKey: 'locationId'})
   };
   return Location;
 };

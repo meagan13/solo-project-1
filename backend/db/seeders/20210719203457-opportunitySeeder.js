@@ -8,7 +8,7 @@ module.exports = {
         locationId: 1,
         categoryId: 1,
         oppName: 'Cooking shift',
-        oppDate: 2021-8-1,
+        oppDate: new Date('2021-8-1'),
         capacity: 10,
       },
       {
@@ -16,7 +16,7 @@ module.exports = {
         locationId: 9,
         categoryId: 2,
         oppName: 'Trauma-Informed De-escalation Training',
-        oppDate: 2021-8-14,
+        oppDate: new Date('2021-8-14'),
         capacity: 25,
       },
       {
@@ -24,7 +24,7 @@ module.exports = {
         locationId: 5,
         categoryId: 3,
         oppName: 'Nashville Metro Council Meeting Advocacy',
-        oppDate: 2021-8-17,
+        oppDate: new Date('2021-8-17'),
         capacity: 10,
       },
       {
@@ -32,7 +32,7 @@ module.exports = {
         locationId: 2,
         categoryId: 1,
         oppName: 'Resource center volunteer',
-        oppDate: 2021-8-7,
+        oppDate: new Date('2021-8-7'),
         capacity: 2,
       },
       {
@@ -40,7 +40,7 @@ module.exports = {
         locationId: 3,
         categoryId: 1,
         oppName: 'Diaper wrapping',
-        oppDate: 2021-8-10,
+        oppDate: new Date('2021-8-10'),
         capacity: 10,
       },
       {
@@ -48,7 +48,7 @@ module.exports = {
         locationId: 5,
         categoryId: 3,
         oppName: 'Contacting local elected officials',
-        oppDate: 2021-8-30,
+        oppDate: new Date('2021-8-30'),
         capacity: 45,
       },
       {
@@ -56,7 +56,7 @@ module.exports = {
         locationId: 7,
         categoryId: 2,
         oppName: 'Teaching new readers',
-        oppDate: 2021-8-15,
+        oppDate: new Date('2021-8-15'),
         capacity: 15,
       },
       {
@@ -64,7 +64,7 @@ module.exports = {
         locationId: 4,
         categoryId: 3,
         oppName: 'March to the capitol in support of prison reform',
-        oppDate: 2021-8-14,
+        oppDate: new Date('2021-8-14'),
         capacity: 100,
       },
       {
@@ -72,7 +72,7 @@ module.exports = {
         locationId: 8,
         categoryId: 2,
         oppName: 'Cross-cultural communication for volunteers',
-        oppDate: 2021-8-25,
+        oppDate: new Date('2021-8-25'),
         capacity: 10,
       },
       {
@@ -80,7 +80,7 @@ module.exports = {
         locationId: 6,
         categoryId: 1,
         oppName: 'Sorting school supplies for teachers',
-        oppDate: 2021-8-7,
+        oppDate: new Date('2021-8-7'),
         capacity: 6,
       },
 

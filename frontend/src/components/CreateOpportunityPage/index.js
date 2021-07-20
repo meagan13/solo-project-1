@@ -2,25 +2,26 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './CreateOpportunity.css';
-import { createOpportunity } from '../../store/session';
+import { createOpportunity } from '../../store/opportunity';
 
 function CreateOpportunityPage() {
+    const sessionUser = useSelector(state => state.session.user);
+
     const dispatch = useDispatch();
-    //const opportunity = useSelector(state => state.session.opportunity);
     const history = useHistory();
 
     const [nonprofitId, setNonprofitId] = useState(0);
     const [locationId, setLocationId] = useState(0);
     const [categoryId, setCategoryId] = useState(0);
     const [oppName, setOppName] = useState('');
-    const [date, setDate] = useState('');
+    const [oppDate, setOppDate] = useState('');
     const [capacity, setCapacity] = useState(0);
 
     const updateNonprofitId = (e) => setNonprofitId(e.target.value);
     const updateLocationId = (e) => setLocationId(e.target.value);
     const updateCategoryId = (e) => setCategoryId(e.target.value);
     const updateOppName = (e) => setOppName(e.target.value);
-    const updateDate = (e) => setDate(e.target.value);
+    const updateOppDate = (e) => setOppDate(e.target.value);
     const updateCapacity = (e) => setCapacity(e.target.value);
 
     // useEffect(() => {
@@ -41,14 +42,17 @@ function CreateOpportunityPage() {
             locationId,
             categoryId,
             oppName,
-            date,
+            oppDate,
             capacity
         };
 
+        //console.log('Payload:', payload)
+
+        //the return value of the thunk, newOpportunity
         let createdOpportunity = await dispatch(createOpportunity(payload));
 
         if(createdOpportunity) {
-            history.push(`opportunities/${ createdOpportunity.id }`);
+            history.push('/');
             //hideForm();
         }
     }
@@ -56,44 +60,46 @@ function CreateOpportunityPage() {
     return (
         <section className="new-opportunity">
             <form onSubmit={ handleSubmit }>
-                <input>
+                <input
                     type="integer"
                     placeholder="Nonprofit Id"
                     value={ nonprofitId }
                     onChange={ updateNonprofitId }
-                </input>
-                <input>
+                />
+                <input
                     type="integer"
                     placeholder="Location Id"
                     value={ locationId }
                     onChange={ updateLocationId }
-                </input>
-                <input>
+                />
+                <input
                     type="integer"
                     placeholder="Category Id"
                     value={ categoryId }
                     onChange={ updateCategoryId }
-                </input>
-                <input>
+                />
+                <input
                     type="text"
                     placeholder="Opportunity Name"
                     value={ oppName }
                     onChange={ updateOppName }
-                </input>
+                />
 
-                <input>
-                    type="text"
+                <input
+                    type="date"
                     placeholder="Date"
-                    value={ date }
-                    onChange={ updateDate }
-                </input>
+                    value={ oppDate }
+                    onChange={ updateOppDate }
+                />
 
-                <input>
+                <input
                     type="integer"
                     placeholder="Capacity"
                     value={ capacity }
                     onChange={ updateCapacity }
-                </input>
+                />
+
+                <button type="submit">Submit</button>
             </form>
         </section>
     )

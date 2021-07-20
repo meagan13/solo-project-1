@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+  //when logged in, we have access to user
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;

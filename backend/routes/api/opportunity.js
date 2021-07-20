@@ -54,11 +54,16 @@ router.post(
     opportunityValidations,
     asyncHandler(async (req, res, next) => {
         //**Remember: req.body = payload
-        const newOpportunity = await Opportunity.build(req.body);
+        //destructuring the keys, they already have values attached
+        const { nonprofitId, locationId, categoryId, oppName, oppDate, capacity } = req.body
+
+        const newOpportunity = await Opportunity.create({nonprofitId, locationId, categoryId, oppName, oppDate, capacity});
+        //console.log(req.body)
 
         if(newOpportunity) {
-            await newOpportunity.save();
+            //console.log('New Opportunity', newOpportunity)
             return res.json(newOpportunity)
+            //becomes the response that is sent back to the thunk (line 16)
         } else {
             next(opportunityNotFoundError())
         }

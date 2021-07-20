@@ -5,7 +5,8 @@ import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
-
+const CREATE_OPP = 'session/createOpportunity'
+;
 //action creators
 const setUser = (user) => {
   return {
@@ -19,6 +20,13 @@ const removeUser = () => {
     type: REMOVE_USER,
   };
 };
+
+const createOppAction = (opportunity) => {
+  return {
+    type: CREATE_OPP,
+    payload: opportunity,
+  };
+}
 
 //thunks
 export const signup = (user) => async (dispatch) => {
@@ -65,6 +73,22 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+export const createOpportunity = (opportunity) => async dispatch => {
+  const response = await csrfFetch('/api/opportunities/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(opportunity)
+  });
+
+  const newOpportunity = await response.json();
+
+  if(response.ok) {
+    dispatch(createOppAction(newOpportunity))
+  }
+
+  return newOpportunity;
+}
+
 //state variable for Reducer
 const initialState = { user: null };
 
@@ -80,6 +104,15 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.user = null;
       return newState;
+    case CREATE_OPP: {
+      return {
+        ...state,
+        [action.opportunity.id]: {
+          ...state[action.opportunity.id],
+          ...action.opportunity,
+        }
+      };
+    }
     default:
       return state;
   }

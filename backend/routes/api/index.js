@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const opportunitiesRouter = require('./opportunity.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/opportunities', opportunitiesRouter)
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
@@ -39,5 +41,11 @@ router.get(
     return res.json(req.user);
   }
 );
+
+router.get('/hello/world', function(req, res) {
+  res.cookie('XSRF-TOKEN', req.csrfToken());
+  res.send('Hello World!');
+});
+
 
 module.exports = router;

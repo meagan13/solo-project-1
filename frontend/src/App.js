@@ -7,6 +7,7 @@ import CreateOpportunityPage from "./components/CreateOpportunityPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/Home";
+import Opportunity from "./components/Opportunity";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +27,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/opportunities">
+          <Route exact path="/opportunities">
             <CreateOpportunityPage />
           </Route>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route path="/opportunities/:id">
+            <Opportunity />
           </Route>
         </Switch>
       )}

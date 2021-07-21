@@ -70,12 +70,27 @@ export const editOpp = (payload) => async dispatch => {
         body: JSON.stringify(payload)
     })
 
+    const oppToEdit = await res.json();
+
     if(res.ok) {
-        const oppToEdit = await res.json();
         dispatch(edit(oppToEdit));
-        return oppToEdit;
     }
+
+    return oppToEdit;
 };
+
+export const removeOpp = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/opportunities/${ payload.id }`, {
+        method: 'DELETE',
+        body: JSON.stringify(payload)
+    })
+
+    if(res.ok) {
+        const oppToDelete = await res.json();
+        dispatch(remove(oppToDelete));
+        return oppToDelete;
+    }
+}
 //const initialState = { opportunity:{}, likes:0 }
 const initialState = { opportunity: {}};
 
@@ -101,6 +116,18 @@ const opportunityReducer = (state = initialState, action) => {
             });
             //return the updated state the store; includes all old state (...state) and the new state (...allOpps)
             return {...state, ...allOpps}
+        }
+        case EDIT: {
+            return {
+                ...state,
+                [action.opportunity.id]: {
+                    ...state[action.opportunity.id],
+                    ...action.opportunity
+                }
+            }
+        }
+        case REMOVE_OPP: {
+
         }
         default:
             return state;

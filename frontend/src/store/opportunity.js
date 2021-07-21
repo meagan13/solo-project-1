@@ -1,8 +1,11 @@
 import { csrfFetch } from './csrf';
 
 const CREATE_OPP = 'opportunity/createOpportunity';
+const LOAD = 'opportunities/load';
+const EDIT = 'opportunities/edit';
+const REMOVE_OPP = 'opportunities/remove';
 
-//action creator sends it to the reducer
+//action creators: sends data to the reducer
 const createOppAction = (opportunity) => {
     return {
       type: CREATE_OPP,
@@ -10,7 +13,28 @@ const createOppAction = (opportunity) => {
     };
 }
 
+const load = (oppList) => {
+    return {
+        type: LOAD,
+        oppList,
+    };
+};
 
+const edit = (opportunity) => {
+    return {
+        type: EDIT,
+        opportunity
+    }
+}
+
+const remove = (opportunity) => {
+    return {
+        type: REMOVE_OPP,
+        opportunity
+    }
+}
+
+//thunk creators
 export const createOpportunity = (opportunity) => async dispatch => {
     //console.log('Opportunity in Thunk:', opportunity)
     //fetch call to our back-end opportunities route
@@ -30,6 +54,28 @@ export const createOpportunity = (opportunity) => async dispatch => {
 
 }
 
+export const getOpportunities = () => async dispatch => {
+    const res = await csrfFetch('/api/opportunities');
+
+    if(res.ok) {
+        const oppsList = await res.json();
+        dispatch(load(oppsList));
+        return oppsList;
+    }
+};
+
+export const editOpp = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/opportunities/${ payload.id }`, {
+        method: 'PUT',
+        body: JSON.stringify(payload)
+    })
+
+    if(res.ok) {
+        const oppToEdit = await res.json();
+        dispatch(edit(oppToEdit));
+        return oppToEdit;
+    }
+};
 //const initialState = { opportunity:{}, likes:0 }
 const initialState = { opportunity: {}};
 
@@ -42,9 +88,19 @@ const opportunityReducer = (state = initialState, action) => {
             //set an action.opportunity.id key on the state.opportunity object
             //set the value to the payload, which is accessed at action.opportunity
             newState.opportunity[action.opportunity.id] = action.opportunity
-            console.log("New State:", newState)
+            //console.log("New State:", newState)
             //this updates newState, which would trigger useSelector if we're using it
             return newState;
+        }
+        case LOAD: {
+            const allOpps = {};
+            //build out the allOpps object
+            action.oppList.forEach(opportunity => {
+                //'normalize' the data, send it back to the Component
+                allOpps[opportunity.id] = opportunity;
+            });
+            //return the updated state the store; includes all old state (...state) and the new state (...allOpps)
+            return {...state, ...allOpps}
         }
         default:
             return state;

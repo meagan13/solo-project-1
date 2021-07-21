@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './CreateOpportunity.css';
 import { createOpportunity } from '../../store/opportunity';
@@ -23,16 +23,6 @@ function CreateOpportunityPage() {
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);
     const updateCapacity = (e) => setCapacity(e.target.value);
-
-    // useEffect(() => {
-    //     dispatch(thunkName()?)
-    // }, [dispatch])
-
-    // useEffect(() => {
-    //     if(opportunities.length && !oppName) {
-    //         setOppName(opportunities[0]);
-    //     }
-    // }, [opportunities, oppName]);
 
     const handleSubmit = async(e) => {
         e.preventDefault();

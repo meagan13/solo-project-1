@@ -33,6 +33,21 @@ const opportunityNotFoundError = () => {
     return err;
 };
 
+// this back-end route goes to /opportunities/
+router.get(
+    '/',
+    asyncHandler(async (req, res, next) => {
+        const opportunities = await Opportunity.findAll(req.params)
+        //opportunities is an array of opportunity objects
+
+        if(opportunities) {
+            return res.json(opportunities)
+        } else {
+            next(opportunityNotFoundError)
+        }
+    })
+)
+
 router.get(
     '/:id',
     asyncHandler(async (req, res, next) => {

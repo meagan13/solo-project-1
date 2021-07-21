@@ -5,7 +5,7 @@ const opportunitiesRouter = require('./opportunity.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
-router.use('/opportunities', opportunitiesRouter)
+router.use('/opportunities', opportunitiesRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
@@ -34,6 +34,7 @@ router.get(
 );
 
 const { requireAuth } = require('../../utils/auth.js');
+
 router.get(
   '/require-auth',
   requireAuth,

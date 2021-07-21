@@ -85,12 +85,15 @@ export const removeOpp = (payload) => async dispatch => {
         body: JSON.stringify(payload)
     })
 
+    const oppToDelete = await res.json();
+
     if(res.ok) {
-        const oppToDelete = await res.json();
         dispatch(remove(oppToDelete));
-        return oppToDelete;
     }
+
+    return oppToDelete;
 }
+
 //const initialState = { opportunity:{}, likes:0 }
 const initialState = { opportunity: {}};
 
@@ -127,7 +130,8 @@ const opportunityReducer = (state = initialState, action) => {
             }
         }
         case REMOVE_OPP: {
-
+            delete newState[action.opportunity.id];
+            return newState;
         }
         default:
             return state;

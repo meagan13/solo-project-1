@@ -25,24 +25,28 @@ function Opportunity() {
 
     let opportunity = opportunities[id]
 
-    const [oppName, setOppName] = useState('');
-    const [oppDate, setOppDate] = useState('');
-    const [capacity, setCapacity] = useState(0);
-    // const [oppName, setOppName] = useState(opportunity.oppName);
-    // const [oppDate, setOppDate] = useState(opportunity.oppDate);
-    // const [capacity, setCapacity] = useState(opportunity.capacity);
+    // const [oppName, setOppName] = useState('');
+    // const [oppDate, setOppDate] = useState('');
+    // const [capacity, setCapacity] = useState(0);
+    const [oppName, setOppName] = useState(opportunity?.oppName);
+    const [oppDate, setOppDate] = useState(opportunity?.oppDate);
+    const [capacity, setCapacity] = useState(opportunity?.capacity);
+    const [category, setCategory] = useState(opportunity?.category);
 
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);
     const updateCapacity = (e) => setCapacity(e.target.value);
+    const updateCategory = (e) => setCategory(e.target.value);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
 
         const payload = {
+            id,
             oppName,
             oppDate,
-            capacity
+            capacity,
+            category
         };
 
         //the return value of the thunk, newOpportunity
@@ -58,6 +62,7 @@ function Opportunity() {
         e.preventDefault();
 
         const payload = {
+            id,
             oppName,
             oppDate,
             capacity
@@ -73,7 +78,9 @@ function Opportunity() {
     return (
         <>
             <div className='opportunity'>
-                <h2>{ opportunity?.oppName }</h2>
+                <h2>Opportunity: { opportunity?.oppName }</h2>
+                <h3>Opportunity Date: { opportunity?.oppDate }</h3>
+                <h3>Capcity: { opportunity?.capacity }</h3>
             </div>
             <div className='edited-opportunity'>
                 <form onSubmit={ handleSubmit }>
@@ -101,7 +108,7 @@ function Opportunity() {
                     <button type="submit">Edit Opportunity</button>
                 </form>
                 <form onSubmit={ handleDelete }>
-                    <button type="delete">Delete Opportunity</button>
+                    <button type="submit">Delete Opportunity</button>
                 </form>
 
             </div>

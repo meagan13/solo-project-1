@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/Home";
 import Opportunity from "./components/Opportunity";
+import OppSignup from "./components/OppSignup";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/opportunities/:id">
             <Opportunity />
+          </Route>
+          <Route exact path="/signups">
+            <OppSignup />
           </Route>
         </Switch>
       )}

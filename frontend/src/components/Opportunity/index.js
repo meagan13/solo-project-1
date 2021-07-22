@@ -7,7 +7,7 @@ import { getOpportunities, editOpp, removeOpp } from '../../store/opportunity';
 
 function Opportunity() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    //const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
 
     const { id } = useParams();
@@ -80,7 +80,7 @@ function Opportunity() {
             <div className='opportunity'>
                 <h2>Opportunity: { opportunity?.oppName }</h2>
                 <h3>Opportunity Date: { opportunity?.oppDate }</h3>
-                <h3>Capcity: { opportunity?.capacity }</h3>
+                <h3>Capacity: { opportunity?.capacity }</h3>
             </div>
             <div className='edited-opportunity'>
                 <form onSubmit={ handleSubmit }>
@@ -109,6 +109,9 @@ function Opportunity() {
                 </form>
                 <form onSubmit={ handleDelete }>
                     <button type="submit">Delete Opportunity</button>
+                </form>
+                <form>
+                    <button type="submit">Sign Up</button>
                 </form>
 
             </div>

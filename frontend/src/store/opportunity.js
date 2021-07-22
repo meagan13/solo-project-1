@@ -106,7 +106,7 @@ const opportunityReducer = (state = initialState, action) => {
         case CREATE_OPP: {
             //set an action.opportunity.id key on the state.opportunity object
             //set the value to the payload, which is accessed at action.opportunity
-            newState.opportunity[action.opportunity.id] = action.opportunity
+            newState[action.opportunity.id] = action.opportunity
             //console.log("New State:", newState)
             //this updates newState, which would trigger useSelector if we're using it
             return newState;

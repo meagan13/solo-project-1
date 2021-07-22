@@ -21,7 +21,7 @@ function Opportunity() {
     });
 
     console.log("oppssss:", opportunities)
-    console.log("signups:", signups)
+    console.log("state.session:", signups)
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store
     useEffect(() => {
@@ -29,12 +29,12 @@ function Opportunity() {
         dispatch(getOpportunities())
     }, [dispatch])
 
-    useEffect(() => {
-        dispatch(createSignup())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(createSignup())
+    // }, [dispatch])
 
     let opportunity = opportunities[id]
-    let signup = signups[id]
+    // let signup = signups[id]
 
     // const [oppName, setOppName] = useState('');
     // const [oppDate, setOppDate] = useState('');
@@ -43,8 +43,8 @@ function Opportunity() {
     const [oppDate, setOppDate] = useState(opportunity?.oppDate);
     const [capacity, setCapacity] = useState(opportunity?.capacity);
     const [category, setCategory] = useState(opportunity?.category);
-    const [oppId, setOppId] = useState(signup?.oppId);
-    const [userId, seUserId] = useState(signup?.userId);
+    const [oppId, setOppId] = useState(Number(id));
+    const [userId, seUserId] = useState(sessionUser.id);
 
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);
@@ -92,7 +92,6 @@ function Opportunity() {
         e.preventDefault();
 
         const payload = {
-            id,
             oppId,
             userId
         }
@@ -110,7 +109,6 @@ function Opportunity() {
                 <h2>Opportunity: { opportunity?.oppName }</h2>
                 <h3>Submitted by: { sessionUser?.username }</h3>
                 <h3>Opportunity Date: { (`${opportunity?.oppDate}`).slice(0, 10) }</h3>
-                <p>Testing the name: { `Name: ${ opportunity?.User }` } </p>
             </div>
             <div className='edited-opportunity'>
                 <form onSubmit={ handleSubmit }>

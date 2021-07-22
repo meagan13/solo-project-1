@@ -32,7 +32,7 @@ const signupReducer = (state = initialState, action) => {
     switch(action.type) {
         case CREATE_SIGNUP: {
             // console.log("reducer test:", newState.signup)
-            newState.signup[action.signup.id] = action.signup;
+            newState[action.signup.id] = action.signup;
             return newState;
         }
         default:

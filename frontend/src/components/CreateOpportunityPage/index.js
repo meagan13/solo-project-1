@@ -21,9 +21,9 @@ function CreateOpportunityPage() {
 
     const history = useHistory();
 
-    const [nonprofitId, setNonprofitId] = useState(0);
-    const [locationId, setLocationId] = useState(0);
-    const [categoryId, setCategoryId] = useState(0);
+    const [nonprofitId, setNonprofitId] = useState(sessionUser.id);
+    const [locationId, setLocationId] = useState(1);
+    const [categoryId, setCategoryId] = useState(1);
     const [oppName, setOppName] = useState('');
     const [oppDate, setOppDate] = useState('');
     const [capacity, setCapacity] = useState(0);
@@ -63,12 +63,12 @@ function CreateOpportunityPage() {
             <h2>Create an Opportunity:</h2>
             <div className='opportunity-form-div'>
                 <form onSubmit={ handleSubmit }>
-                    {/* <input
+                    <input
                         type="integer"
                         placeholder="User Id"
                         value={ nonprofitId }
                         onChange={ updateNonprofitId }
-                    /> */}
+                    />
                     <div className="select-location create-opp-input">
                         <select
                             type="select"

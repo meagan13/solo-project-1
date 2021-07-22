@@ -1,0 +1,24 @@
+.new-opportunity {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 15px;
+}
+
+.opportunity-form-div {
+    padding: 15px;
+    border-radius: 3px;
+    border: 2px solid rgb(40, 40, 99);
+    width: 450px;
+}
+
+.create-opp-input {
+    padding: 5px;
+}
+
+input, select {
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.submit-opp-button {
+    padding-top: 15px;
+}

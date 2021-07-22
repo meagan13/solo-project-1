@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import opportunityReducer from "./opportunity";
 import signupReducer from "./oppSignup";
+import locationReducer from "./locations";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   opportunity: opportunityReducer,
   signup: signupReducer,
+  location: locationReducer,
 });
 
 let enhancer;

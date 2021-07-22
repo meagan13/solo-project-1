@@ -49,48 +49,72 @@ function CreateOpportunityPage() {
 
     return (
         <section className="new-opportunity">
-            <form onSubmit={ handleSubmit }>
-                <input
-                    type="integer"
-                    placeholder="Nonprofit Id"
-                    value={ nonprofitId }
-                    onChange={ updateNonprofitId }
-                />
-                <input
-                    type="integer"
-                    placeholder="Location Id"
-                    value={ locationId }
-                    onChange={ updateLocationId }
-                />
-                <input
-                    type="integer"
-                    placeholder="Category Id"
-                    value={ categoryId }
-                    onChange={ updateCategoryId }
-                />
-                <input
-                    type="text"
-                    placeholder="Opportunity Name"
-                    value={ oppName }
-                    onChange={ updateOppName }
-                />
+            <h2>Create an Opportunity:</h2>
+            <div className='opportunity-form-div'>
+                <form onSubmit={ handleSubmit }>
+                    {/* <input
+                        type="integer"
+                        placeholder="User Id"
+                        value={ nonprofitId }
+                        onChange={ updateNonprofitId }
+                    /> */}
+                    <div className='select-location create-opp-input'>
+                        <select
+                            type="select"
+                            placeholder="Location Id"
+                            value={ locationId }
+                            onChange={ updateLocationId }
+                        >
+                            <option value="0">{ `${ locationId }` }</option>
+                            <option value="1">Add locations from store</option>
+                        </select>
+                    </div>
 
-                <input
-                    type="date"
-                    placeholder="Date"
-                    value={ oppDate }
-                    onChange={ updateOppDate }
-                />
+                    <div className='select-category create-opp-input'>
+                        <select
+                            type="select"
+                            placeholder="Category Id"
+                            value={ categoryId }
+                            onChange={ updateCategoryId }
+                        >
+                            <option value="1">Volunteer</option>
+                            <option value="2">Learn</option>
+                            <option value="3">Advocate</option>
+                        </select>
+                    </div>
 
-                <input
-                    type="integer"
-                    placeholder="Capacity"
-                    value={ capacity }
-                    onChange={ updateCapacity }
-                />
+                    <div className='enter-opp-name create-opp-input'>
+                        <input
+                            type="text"
+                            placeholder="Opportunity Name"
+                            value={ oppName }
+                            onChange={ updateOppName }
+                        />
+                    </div>
 
-                <button type="submit">Submit</button>
-            </form>
+                    <div className='select-date create-opp-input'>
+                        <input
+                            type="date"
+                            placeholder="Date"
+                            value={ oppDate }
+                            onChange={ updateOppDate }
+                        />
+                    </div>
+
+                    <div className='enter-capactiy create-opp-input'>
+                        <input
+                            type="integer"
+                            placeholder="Capacity"
+                            value={ capacity }
+                            onChange={ updateCapacity }
+                        />
+                    </div>
+
+                    <div className='submit-opp-button'>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </section>
     )
 }

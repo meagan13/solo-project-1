@@ -79,40 +79,60 @@ function Opportunity() {
         <>
             <div className='opportunity'>
                 <h2>Opportunity: { opportunity?.oppName }</h2>
-                <h3>Opportunity Date: { opportunity?.oppDate }</h3>
+                <h3>Submitted by: { opportunity?.userId }</h3>
+                <h3>Opportunity Date: { (`${opportunity?.oppDate}`).slice(0, 10) }</h3>
                 <h3>Capacity: { opportunity?.capacity }</h3>
+                {/* <p>Testing the date: { `Data Type: ${ typeof opportunity?.oppDate}` }</p>
+                <p>Testing the date: { (`${opportunity?.oppDate}`).slice(0, 10) }</p> */}
             </div>
             <div className='edited-opportunity'>
                 <form onSubmit={ handleSubmit }>
-                    <input
-                        type="text"
-                        placeholder="Opportunity Name"
-                        value={ oppName }
-                        onChange={ updateOppName }
-                    />
+                    <div className='edit-input'>
+                        <input className='edit-name '
+                            type="text"
+                            placeholder="Opportunity Name"
+                            value={ oppName }
+                            onChange={ updateOppName }
+                        />
+                    </div>
 
-                    <input
-                        type="date"
-                        placeholder="Date"
-                        value={ oppDate }
-                        onChange={ updateOppDate }
-                    />
+                    <br />
 
-                    <input
-                        type="integer"
-                        placeholder="Capacity"
-                        value={ capacity }
-                        onChange={ updateCapacity }
-                    />
+                    <div className='edit-input'>
+                        <input className='edit-date edit-input'
+                            type="date"
+                            placeholder="Date"
+                            value={ oppDate }
+                            onChange={ updateOppDate }
+                        />
+                    </div>
 
-                    <button type="submit">Edit Opportunity</button>
+                    <br />
+                    <div className='edit-input'>
+                        <input className='edit-capacity edit-input'
+                            type="integer"
+                            placeholder="Capacity"
+                            value={ capacity }
+                            onChange={ updateCapacity }
+                        />
+                    </div>
+
+                    <br />
+
+                    <button type="submit" className='edit-button button'>Edit Opportunity</button>
                 </form>
-                <form onSubmit={ handleDelete }>
-                    <button type="submit">Delete Opportunity</button>
-                </form>
-                <form>
-                    <button type="submit">Sign Up</button>
-                </form>
+
+                <div className='delete-button-div button'>
+                    <form onSubmit={ handleDelete }>
+                        <button type="submit" className='delete-button button'>Delete Opportunity</button>
+                    </form>
+                </div>
+
+                <div className='signup-button-div button'>
+                    <form>
+                        <button type="submit" className='signup-button button'>Sign Up</button>
+                    </form>
+                </div>
 
             </div>
         </>

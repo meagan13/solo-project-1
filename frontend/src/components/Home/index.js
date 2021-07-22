@@ -13,7 +13,7 @@ const HomePage = () => {
     //useSelector gives us access to the store
     //
     const opportunitiesList = useSelector(state => {
-        console.log("State.opportunity:", state.opportunity)
+        //console.log("State.opportunity:", state.opportunity)
 
         //grab all values from the object and make it an array
         const oppsList = Object.values(state.opportunity)
@@ -48,7 +48,7 @@ const HomePage = () => {
                         }
                     >
                         <div>
-                            <div className="primart-text">{ opportunity.oppName }</div>
+                            <div className="primary-text">{ opportunity.oppName }</div>
                             <div className="secondary-text">{ opportunity.oppDate }</div>
                         </div>
                     </div> */}

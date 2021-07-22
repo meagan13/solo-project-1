@@ -29,10 +29,6 @@ function Opportunity() {
         dispatch(getOpportunities())
     }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(createSignup())
-    // }, [dispatch])
-
     let opportunity = opportunities[id]
     // let signup = signups[id]
 
@@ -44,7 +40,7 @@ function Opportunity() {
     const [capacity, setCapacity] = useState(opportunity?.capacity);
     const [category, setCategory] = useState(opportunity?.category);
     const [oppId, setOppId] = useState(Number(id));
-    const [userId, seUserId] = useState(sessionUser.id);
+    const [userId, setUserId] = useState(sessionUser.id);
 
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);

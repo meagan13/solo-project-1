@@ -5,13 +5,16 @@ import { getOpportunities } from '../../store/opportunity';
 import './Home.css';
 
 const HomePage = () => {
-    // const params = useParams();
-    // const { opportunities } = params
-    // console.log("params", params)
-    // console.log('Opportunities?:', opportunities)
+    // const { id } = useParams();
+    // //useSelector gives us access to the store
+    // //
+    // const testCategory = useSelector(state => state.categoryId);
+    // const sessionUser = useSelector(state => state.session);
 
-    //useSelector gives us access to the store
-    //
+    // console.log("state.session:" , sessionUser)
+    // console.log("testCat:", testCategory)
+    // const [categoryId, setCategoryId] = useState(sessionUser.id);
+
     const opportunitiesList = useSelector(state => {
         //console.log("State.opportunity:", state.opportunity)
 
@@ -35,12 +38,14 @@ const HomePage = () => {
     //return null;
     return (
         <>
-            <h3>Create an Opportunity!</h3>
+            {/* <h3>Create an Opportunity!</h3> */}
             <div className="opp-holder">
                 { opportunitiesList.map((opportunity, i) => (
                     <NavLink key={i} to={ `/opportunities/${ opportunity?.id }`}>
                         <div className={`opp-div-${ i } opp-div`}>
                             <h2>{ opportunity?.oppName }</h2>
+                            <p>Add Category Icon</p>
+                            {/* <p>{ category.id } </p> */}
                         </div>
                         {/* <div
                             className={

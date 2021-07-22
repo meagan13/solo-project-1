@@ -1,3 +1,23 @@
+/* body {
+    background-image: url('https://tinyurl.com/wsc4mypu');
+} */
+
+.home-div a {
+    text-decoration: none;
+    color: black;
+    font-size: 125px;
+}
+
+.home-div a:hover {
+    color: yellow;
+    font-size: 125px;
+}
+
+i {
+    /* background-color: deeppink; */
+    justify-content: right;
+}
+
 .profile-dropdown {
     font-size: 15px;
     list-style-type: none;
@@ -6,6 +26,17 @@
 .home-button {
     font-size: 35px;
     list-style-type: none;
+    text-decoration: none;
 }
 
-
+.home-div {
+    /* background-color: pink; */
+    background-image: url('https://tinyurl.com/wsc4mypu');
+    border: 2px solid gray;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}

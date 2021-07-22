@@ -1,0 +1,40 @@
+
+.home-button {
+    font-size: 35px;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.home-div {
+    background-image: url('https://tinyurl.com/wsc4mypu');
+    border: 2px solid gray;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.opp-div {
+    border: 2px solid rgb(18, 18, 41);
+    padding: 15px;
+    margin: 15px;
+    width: 150px;
+    height: 150px;
+    border-radius: 3px;
+    background-color: rgb(72, 107, 129);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: small;
+}
+
+.opp-holder {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr, 1fr, 1fr;
+    grid-gap: 25px;
+    align-items: center;
+}

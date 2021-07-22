@@ -13,7 +13,7 @@ router.get(
     asyncHandler(async (req, res, next) => {
         const locations = await Location.findAll(req.params);
 
-        console.log("locations:",locations);
+        console.log("locations:", locations);
 
         if(locations) {
             return res.json(locations)

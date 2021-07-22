@@ -13,8 +13,9 @@ function Opportunity() {
     const { id } = useParams();
     //grab the opportunities out of the store
     const opportunities = useSelector(state => {
-        return state.opportunity
+        return state.opportunity;
     });
+
 
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store

@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './CreateOpportunity.css';
 import { createOpportunity } from '../../store/opportunity';
+import { getLocations } from '../../store/locations';
 
 function CreateOpportunityPage() {
     const sessionUser = useSelector(state => state.session.user);
-
     const dispatch = useDispatch();
+
+    const locations = useSelector(state => {
+        return Object.values(state.location);
+    })
+
+    useEffect(() => {
+        dispatch(getLocations())
+    }, [dispatch])
+
+    console.log("locations:", locations);
+
     const history = useHistory();
 
     const [nonprofitId, setNonprofitId] = useState(0);
@@ -58,6 +69,27 @@ function CreateOpportunityPage() {
                         value={ nonprofitId }
                         onChange={ updateNonprofitId }
                     /> */}
+                    <div className="test">
+                        <select
+                            type="select"
+                            onChange={ updateLocationId }
+                        >
+                            {/* { locations.map((location, i) => {
+                                <option value={ `${i}` } key={ i }>{ `${ location.locationName }` }</option>
+                            })} */}
+                            <option value="1">{ locations[0]?.locationName }</option>
+                            <option value="2">{ locations[1]?.locationName }</option>
+                            <option value="3">{ locations[2]?.locationName }</option>
+                            <option value="4">{ locations[3]?.locationName }</option>
+                            <option value="5">{ locations[4]?.locationName }</option>
+                            <option value="6">{ locations[5]?.locationName }</option>
+                            <option value="7">{ locations[6]?.locationName }</option>
+                            <option value="8">{ locations[7]?.locationName }</option>
+                            <option value="9">{ locations[8]?.locationName }</option>
+
+                        </select>
+                    </div>
+{/*
                     <div className='select-location create-opp-input'>
                         <select
                             type="select"
@@ -68,7 +100,7 @@ function CreateOpportunityPage() {
                             <option value="0">{ `${ locationId }` }</option>
                             <option value="1">Add locations from store</option>
                         </select>
-                    </div>
+                    </div> */}
 
                     <div className='select-category create-opp-input'>
                         <select

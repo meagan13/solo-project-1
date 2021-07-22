@@ -44,14 +44,15 @@ export const createOpportunity = (opportunity) => async dispatch => {
         body: JSON.stringify(opportunity)
     });
 
+    const newOpportunity = await response.json();
+
     if(response.ok) {
-        const newOpportunity = await response.json();
         //console.log('New Opportunity ID', newOpportunity.id);
         dispatch(createOppAction(newOpportunity))
         //dispatch sends it to the action creator, createOppAction
-        return newOpportunity;
     }
 
+    return newOpportunity;
 }
 
 export const getOpportunities = () => async dispatch => {
@@ -95,7 +96,7 @@ export const removeOpp = (payload) => async dispatch => {
 }
 
 //const initialState = { opportunity:{}, likes:0 }
-const initialState = { opportunity: {}};
+const initialState = {};
 
 const opportunityReducer = (state = initialState, action) => {
     //copy in the state with ...state

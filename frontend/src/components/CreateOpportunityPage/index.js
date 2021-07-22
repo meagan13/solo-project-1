@@ -69,38 +69,19 @@ function CreateOpportunityPage() {
                         value={ nonprofitId }
                         onChange={ updateNonprofitId }
                     /> */}
-                    <div className="test">
+                    <div className="select-location create-opp-input">
                         <select
                             type="select"
                             onChange={ updateLocationId }
+                            value={ locationId }
+                            placeholder="Location Id"
                         >
-                            {/* { locations.map((location, i) => {
-                                <option value={ `${i}` } key={ i }>{ `${ location.locationName }` }</option>
-                            })} */}
-                            <option value="1">{ locations[0]?.locationName }</option>
-                            <option value="2">{ locations[1]?.locationName }</option>
-                            <option value="3">{ locations[2]?.locationName }</option>
-                            <option value="4">{ locations[3]?.locationName }</option>
-                            <option value="5">{ locations[4]?.locationName }</option>
-                            <option value="6">{ locations[5]?.locationName }</option>
-                            <option value="7">{ locations[6]?.locationName }</option>
-                            <option value="8">{ locations[7]?.locationName }</option>
-                            <option value="9">{ locations[8]?.locationName }</option>
+                            { locations?.map((location) => {
+                                return <option value={ location.locationId } key={ location.locationId }>{ location.locationName }</option>
+                            })}
 
                         </select>
                     </div>
-{/*
-                    <div className='select-location create-opp-input'>
-                        <select
-                            type="select"
-                            placeholder="Location Id"
-                            value={ locationId }
-                            onChange={ updateLocationId }
-                        >
-                            <option value="0">{ `${ locationId }` }</option>
-                            <option value="1">Add locations from store</option>
-                        </select>
-                    </div> */}
 
                     <div className='select-category create-opp-input'>
                         <select

@@ -19,7 +19,7 @@ export const getLocations = () => async dispatch => {
     }
 };
 
-const initialState = { locations: {} };
+const initialState = {};
 
 const locationReducer = (state = initialState, action ) => {
 

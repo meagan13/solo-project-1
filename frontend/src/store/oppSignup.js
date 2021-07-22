@@ -2,17 +2,17 @@ import { csrfFetch } from './csrf';
 
 const CREATE_SIGNUP = 'signups/createSignup';
 
-const create = (opportunity) => {
+const create = (signup) => {
     return {
         type: CREATE_SIGNUP,
-        opportunity,
+        signup,
     }
 }
 
-export const createSignup = (opportunity) => async dispatch => {
+export const createSignup = (payload) => async dispatch => {
     const res = await csrfFetch('/api/signups', {
         method: 'POST',
-        body: JSON.stringify(opportunity)
+        body: JSON.stringify(payload)
     });
 
     const newSignup = await res.json();
@@ -24,13 +24,14 @@ export const createSignup = (opportunity) => async dispatch => {
     return newSignup;
 }
 
-const initialState  = { signup: {} };
+const initialState  = {};
 
 const signupReducer = (state = initialState, action) => {
     let newState = {...state};
 
     switch(action.type) {
         case CREATE_SIGNUP: {
+            // console.log("reducer test:", newState.signup)
             newState.signup[action.signup.id] = action.signup;
             return newState;
         }

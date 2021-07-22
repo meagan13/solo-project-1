@@ -3,20 +3,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './Opportunity.css';
 import { getOpportunities, editOpp, removeOpp } from '../../store/opportunity';
-
+import { createSignup } from '../../store/oppSignup';
 
 function Opportunity() {
     const dispatch = useDispatch();
-    //const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
 
     const { id } = useParams();
+
     //grab the opportunities out of the store
     const opportunities = useSelector(state => {
         return state.opportunity;
     });
+    const signups = useSelector(state => {
+        return state.signup;
+    });
 
-
+    console.log("oppssss:", opportunities)
+    console.log("signups:", signups)
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store
     useEffect(() => {
@@ -24,7 +29,12 @@ function Opportunity() {
         dispatch(getOpportunities())
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(createSignup())
+    }, [dispatch])
+
     let opportunity = opportunities[id]
+    let signup = signups[id]
 
     // const [oppName, setOppName] = useState('');
     // const [oppDate, setOppDate] = useState('');
@@ -33,6 +43,8 @@ function Opportunity() {
     const [oppDate, setOppDate] = useState(opportunity?.oppDate);
     const [capacity, setCapacity] = useState(opportunity?.capacity);
     const [category, setCategory] = useState(opportunity?.category);
+    const [oppId, setOppId] = useState(signup?.oppId);
+    const [userId, seUserId] = useState(signup?.userId);
 
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);
@@ -76,15 +88,29 @@ function Opportunity() {
         }
     }
 
+    const handleSignup = async(e) => {
+        e.preventDefault();
+
+        const payload = {
+            id,
+            oppId,
+            userId
+        }
+
+        let signup = await dispatch(createSignup(payload));
+
+        if(signup) {
+            history.push('/')
+        }
+    }
+
     return (
         <>
             <div className='opportunity'>
                 <h2>Opportunity: { opportunity?.oppName }</h2>
-                <h3>Submitted by: { opportunity?.userId }</h3>
+                <h3>Submitted by: { sessionUser?.username }</h3>
                 <h3>Opportunity Date: { (`${opportunity?.oppDate}`).slice(0, 10) }</h3>
-                <h3>Capacity: { opportunity?.capacity }</h3>
-                {/* <p>Testing the date: { `Data Type: ${ typeof opportunity?.oppDate}` }</p>
-                <p>Testing the date: { (`${opportunity?.oppDate}`).slice(0, 10) }</p> */}
+                <p>Testing the name: { `Name: ${ opportunity?.User }` } </p>
             </div>
             <div className='edited-opportunity'>
                 <form onSubmit={ handleSubmit }>
@@ -130,7 +156,8 @@ function Opportunity() {
                 </div>
 
                 <div className='signup-button-div button'>
-                    <form>
+
+                    <form onSubmit={ handleSignup }>
                         <button type="submit" className='signup-button button'>Sign Up</button>
                     </form>
                 </div>

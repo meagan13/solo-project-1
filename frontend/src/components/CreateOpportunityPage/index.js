@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './CreateOpportunity.css';
 import { createOpportunity } from '../../store/opportunity';
+import { getLocations } from '../../store/locations';
 
 function CreateOpportunityPage() {
     const sessionUser = useSelector(state => state.session.user);
-
     const dispatch = useDispatch();
+
+    const locations = useSelector(state => {
+        return Object.values(state.location);
+    })
+
+    useEffect(() => {
+        dispatch(getLocations())
+    }, [dispatch])
+
+    console.log("locations:", locations);
+
     const history = useHistory();
 
-    const [nonprofitId, setNonprofitId] = useState(0);
-    const [locationId, setLocationId] = useState(0);
-    const [categoryId, setCategoryId] = useState(0);
+    const [nonprofitId, setNonprofitId] = useState(sessionUser.id);
+    const [locationId, setLocationId] = useState(1);
+    const [categoryId, setCategoryId] = useState(1);
     const [oppName, setOppName] = useState('');
     const [oppDate, setOppDate] = useState('');
     const [capacity, setCapacity] = useState(0);
@@ -49,48 +60,74 @@ function CreateOpportunityPage() {
 
     return (
         <section className="new-opportunity">
-            <form onSubmit={ handleSubmit }>
-                <input
-                    type="integer"
-                    placeholder="Nonprofit Id"
-                    value={ nonprofitId }
-                    onChange={ updateNonprofitId }
-                />
-                <input
-                    type="integer"
-                    placeholder="Location Id"
-                    value={ locationId }
-                    onChange={ updateLocationId }
-                />
-                <input
-                    type="integer"
-                    placeholder="Category Id"
-                    value={ categoryId }
-                    onChange={ updateCategoryId }
-                />
-                <input
-                    type="text"
-                    placeholder="Opportunity Name"
-                    value={ oppName }
-                    onChange={ updateOppName }
-                />
+            <h2>Create an Opportunity:</h2>
+            <div className='opportunity-form-div'>
+                <form onSubmit={ handleSubmit }>
+                    <input
+                        type="integer"
+                        placeholder="User Id"
+                        value={ nonprofitId }
+                        onChange={ updateNonprofitId }
+                    />
+                    <div className="select-location create-opp-input">
+                        <select
+                            type="select"
+                            onChange={ updateLocationId }
+                            value={ locationId }
+                            placeholder="Location Id"
+                        >
+                            { locations?.map((location) => {
+                                return <option value={ location.locationId } key={ location.locationId }>{ location.locationName }</option>
+                            })}
 
-                <input
-                    type="date"
-                    placeholder="Date"
-                    value={ oppDate }
-                    onChange={ updateOppDate }
-                />
+                        </select>
+                    </div>
 
-                <input
-                    type="integer"
-                    placeholder="Capacity"
-                    value={ capacity }
-                    onChange={ updateCapacity }
-                />
+                    <div className='select-category create-opp-input'>
+                        <select
+                            type="select"
+                            placeholder="Category Id"
+                            value={ categoryId }
+                            onChange={ updateCategoryId }
+                        >
+                            <option value="1">Volunteer</option>
+                            <option value="2">Learn</option>
+                            <option value="3">Advocate</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Submit</button>
-            </form>
+                    <div className='enter-opp-name create-opp-input'>
+                        <input
+                            type="text"
+                            placeholder="Opportunity Name"
+                            value={ oppName }
+                            onChange={ updateOppName }
+                        />
+                    </div>
+
+                    <div className='select-date create-opp-input'>
+                        <input
+                            type="date"
+                            placeholder="Date"
+                            value={ oppDate }
+                            onChange={ updateOppDate }
+                        />
+                    </div>
+
+                    <div className='enter-capactiy create-opp-input'>
+                        <input
+                            type="integer"
+                            placeholder="Capacity"
+                            value={ capacity }
+                            onChange={ updateCapacity }
+                        />
+                    </div>
+
+                    <div className='submit-opp-button'>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </section>
     )
 }

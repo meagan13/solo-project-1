@@ -8,7 +8,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/Home";
 import Opportunity from "./components/Opportunity";
-import OppSignup from "./components/OppSignup";
+// import OppSignup from "./components/OppSignup";
+// import Locations from "./components/Locations";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,9 +38,12 @@ function App() {
           <Route path="/opportunities/:id">
             <Opportunity />
           </Route>
-          <Route exact path="/signups">
+          {/* <Route exact path="/signups">
             <OppSignup />
           </Route>
+          <Route path="/locations">
+            <Locations />
+          </Route> */}
         </Switch>
       )}
     </>

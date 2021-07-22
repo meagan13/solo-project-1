@@ -1,3 +1,23 @@
 .opportunity {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+
+.edited-opportunity {
+    border: 2px solid rgb(40, 40, 99);
+    border-radius: 3px;
+    padding: 15px;
+    width: 450px;
+}
+
+.edit-input {
+    padding: 5px;
+}
+
+.edit-name {
+    text-overflow: scroll;
+}
+
+.button {
+    padding: 5px;
+    border-radius: 3px;
+}

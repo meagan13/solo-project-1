@@ -13,7 +13,7 @@ const HomePage = () => {
     //useSelector gives us access to the store
     //
     const opportunitiesList = useSelector(state => {
-        console.log("State.opportunity:", state.opportunity)
+        //console.log("State.opportunity:", state.opportunity)
 
         //grab all values from the object and make it an array
         const oppsList = Object.values(state.opportunity)
@@ -34,28 +34,31 @@ const HomePage = () => {
 
     //return null;
     return (
-        <div className="opp-holder">
-            { opportunitiesList.map((opportunity, i) => (
-                <NavLink key={i} to={ `/opportunities/${ opportunity.id }`}>
-                    <div className={`opp-div-${ i } opp-div`}>
-                        <h2>{ opportunity.oppName }</h2>
-                    </div>
-                    {/* <div
-                        className={
-                            Number.parseInt(opportunityId) === opportunity.id
-                                ? "nav-entry is-selected"
-                                : "is-selected"
-                        }
-                    >
-                        <div>
-                            <div className="primart-text">{ opportunity.oppName }</div>
-                            <div className="secondary-text">{ opportunity.oppDate }</div>
+        <>
+            <h3>Create an Opportunity!</h3>
+            <div className="opp-holder">
+                { opportunitiesList.map((opportunity, i) => (
+                    <NavLink key={i} to={ `/opportunities/${ opportunity?.id }`}>
+                        <div className={`opp-div-${ i } opp-div`}>
+                            <h2>{ opportunity?.oppName }</h2>
                         </div>
-                    </div> */}
-                </NavLink>
-                )
-            )}
-        </div>
+                        {/* <div
+                            className={
+                                Number.parseInt(opportunityId) === opportunity.id
+                                    ? "nav-entry is-selected"
+                                    : "is-selected"
+                            }
+                        >
+                            <div>
+                                <div className="primary-text">{ opportunity.oppName }</div>
+                                <div className="secondary-text">{ opportunity.oppDate }</div>
+                            </div>
+                        </div> */}
+                    </NavLink>
+                    )
+                )}
+            </div>
+        </>
 
     )
 }

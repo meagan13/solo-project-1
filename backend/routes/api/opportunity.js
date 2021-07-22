@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Opportunity } = require('../../db/models');
+const { Opportunity, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -37,7 +37,8 @@ const opportunityNotFoundError = () => {
 router.get(
     '/',
     asyncHandler(async (req, res, next) => {
-        const opportunities = await Opportunity.findAll(req.params)
+        const opportunities = await Opportunity.findAll(req.params, {
+        })
         //opportunities is an array of opportunity objects
 
         if(opportunities) {

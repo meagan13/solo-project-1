@@ -3,11 +3,13 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const opportunitiesRouter = require('./opportunity.js');
 const signupsRouter = require('./oppSignup.js');
+const locationsRouter = require('./locations.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/opportunities', opportunitiesRouter);
-router.use('/signups', signupsRouter)
+router.use('/signups', signupsRouter);
+router.use('/locations', locationsRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });

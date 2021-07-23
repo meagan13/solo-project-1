@@ -15,18 +15,27 @@ function Navigation({ isLoaded }){
   //if you're logged in...
   if (sessionUser) {
     sessionLinks = (
-      <>
-        <ProfileButton user={sessionUser} />
-        <NavLink to="/profile">Profile</NavLink>
-        <NavLink to="/opportunities">Create an Opportunity</NavLink>
-      </>
+      <div className="profile-opp-div">
+        <div className="profile-div">
+          <ProfileButton user={sessionUser} />
+          <NavLink to="/profile">Profile</NavLink>
+        </div>
+
+        <div className="opp-link-div">
+          <NavLink to="/opportunities">Create an Opportunity</NavLink>
+        </div>
+      </div>
     );
   } else {
     sessionLinks = (
-      <>
+      <div className="login-signup-div">
+        <div className='login-div'>
         <NavLink to="/login">Log In</NavLink>
+        </div>
+        <div className='signup-div'>
         <NavLink to="/signup">Sign Up</NavLink>
-      </>
+        </div>
+      </div>
     );
   }
 

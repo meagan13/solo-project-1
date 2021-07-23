@@ -5,15 +5,7 @@ import { getOpportunities } from '../../store/opportunity';
 import './Home.css';
 
 const HomePage = () => {
-    // const { id } = useParams();
     // //useSelector gives us access to the store
-    // //
-    // const testCategory = useSelector(state => state.categoryId);
-    // const sessionUser = useSelector(state => state.session);
-
-    // console.log("state.session:" , sessionUser)
-    // console.log("testCat:", testCategory)
-    // const [categoryId, setCategoryId] = useState(sessionUser.id);
 
     const opportunitiesList = useSelector(state => {
         //console.log("State.opportunity:", state.opportunity)

@@ -1,46 +1,48 @@
-import { useState, useEffect, useImperativeHandle } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './Opportunity.css';
 import { getOpportunities, editOpp, removeOpp } from '../../store/opportunity';
-import { createSignup } from '../../store/oppSignup';
+import { createSignup, getSignups } from '../../store/oppSignup';
 import { getUsers } from '../../store/user';
 
 function Opportunity() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
-    const session = useSelector(state => state.session);
-    const state = useSelector(state => state)
     const history = useHistory();
-    const userTest = useSelector(state => state.user)
-
     const { id } = useParams();
 
-    //grab the opportunities out of the store
+    //grab data from the store
+    const sessionUser = useSelector(state => state.session.user);
+
     const opportunities = useSelector(state => {
-        return state.opportunity;
+        const oppsArr = Object.values(state.opportunity)
+        return oppsArr;
     });
 
     const signups = useSelector(state => {
-        return state.signup;
+        const userSignups = Object.values(state.signup)
+        //can add .reverse
+        return userSignups;
     });
 
-    //grab the users out of the store
     const users = useSelector(state => {
-        return state.user;
+        const usersArr = Object.values(state.user);
+        return usersArr;
     })
+    // console.log("ooopppppps:", opportunities)
+    // console.log("signups test in Opp:", signups)
+    console.log("users in opppppp:", users)
+    //grab the users out of the store
 
-    console.log("user test:", userTest)
-    console.log("state:", state)
-    console.log('session:', session)
-    console.log('id:', id)
-    console.log('users:', users)
+    const userObj = {};
+
+    console.log("users test in Opp:", users)
 
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store
     useEffect(() => {
-        //dispatch: if function, connects with backend;
         dispatch(getOpportunities())
+        dispatch(getSignups())
     }, [dispatch])
 
     useEffect(() => {
@@ -50,9 +52,10 @@ function Opportunity() {
 
     let opportunity = opportunities[id]
     // let signup = signups[id]
-    let user = users[opportunity.nonprofitId]
+    // let user = users[opportunity?.nonprofitId]
 
-    console.log('user:', user)
+    // console.log("user test in opp:", user)
+    // // console.log('user:', user)
 
     // const [oppName, setOppName] = useState('');
     // const [oppDate, setOppDate] = useState('');

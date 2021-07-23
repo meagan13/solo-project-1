@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import { getOpportunities } from '../../store/opportunity';
 //import { getUser } from '../../store/user';
 import { getSignups } from '../../store/oppSignup';
@@ -8,7 +8,6 @@ import './Profile.css';
 
 const ProfilePage = () => {
     //useSelector pulls data from the store, but we have to add it to the store with the Reducer first
-    const state = useSelector(state => state);
     const sessionUser = useSelector(state => state.session);
     const signups = useSelector(state => {
         const userSignups = Object.values(state.signup).filter(signup => signup?.userId === sessionUser?.user.id)

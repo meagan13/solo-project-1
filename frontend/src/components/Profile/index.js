@@ -19,7 +19,7 @@ const ProfilePage = () => {
     const signupObj = {}
 
     signups.forEach(signup => {
-        signupObj[signup.oppId] = signup;
+        signupObj[signup?.oppId] = signup;
     })
 
     const userOpportunitiesList = useSelector(state => {

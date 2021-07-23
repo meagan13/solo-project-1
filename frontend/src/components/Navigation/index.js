@@ -18,6 +18,7 @@ function Navigation({ isLoaded }){
       <>
         <ProfileButton user={sessionUser} />
         <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/opportunities">Create an Opportunity</NavLink>
       </>
     );
   } else {

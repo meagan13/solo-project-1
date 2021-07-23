@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const CREATE_SIGNUP = 'signups/createSignup';
 const REMOVE_SIGNUP = 'signups/removeSignup';
+const LOAD = 'signups/loadSignups';
 
 const create = (signup) => {
     return {
@@ -14,6 +15,13 @@ const remove = (signup) => {
     return {
         type: REMOVE_SIGNUP,
         signup,
+    }
+}
+
+const load = (signupList) => {
+    return {
+        type: LOAD,
+        signupList,
     }
 }
 
@@ -47,8 +55,20 @@ export const removeSignup = (payload) => async dispatch => {
     return signupToRemove;
 }
 
+export const getSignups = () => async dispatch => {
+    const res = await csrfFetch('/api/signups');
+
+    if(res.ok) {
+        const signupsList = await res.json();
+        dispatch(load(signupsList));
+        return signupsList;
+    }
+};
+
+
 const initialState  = {};
 
+//Reducer adds it to the store
 const signupReducer = (state = initialState, action) => {
     let newState = {...state};
 
@@ -61,6 +81,14 @@ const signupReducer = (state = initialState, action) => {
         case REMOVE_SIGNUP: {
             delete newState[action.signup.id];
             return newState;
+        }
+        case LOAD: {
+            const allSignups = {};
+            action.signupList.forEach(signup => {
+                allSignups[signup.id] = signup;
+            });
+            //adds it to the store here
+            return { ...state, ...allSignups }
         }
         default:
             return state;

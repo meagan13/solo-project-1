@@ -21,7 +21,7 @@ function CreateOpportunityPage() {
 
     const history = useHistory();
 
-    const [nonprofitId, setNonprofitId] = useState(sessionUser.id);
+    const [nonprofitId, setNonprofitId] = useState(sessionUser?.id);
     const [locationId, setLocationId] = useState(1);
     const [categoryId, setCategoryId] = useState(1);
     const [oppName, setOppName] = useState('');

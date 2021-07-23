@@ -37,7 +37,7 @@ function App() {
           <Route path="/opportunities/:id">
             <Opportunity />
           </Route>
-          <Route path="/profile/:id">
+          <Route path="/profile">
             <Profile />
           </Route>
           {/* <Route exact path="/signups">

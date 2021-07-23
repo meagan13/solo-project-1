@@ -12,9 +12,14 @@ function Navigation({ isLoaded }){
   console.log(sessionUser);
 
   let sessionLinks;
+  //if you're logged in...
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <ProfileButton user={sessionUser} />
+        <NavLink to="/profile">Profile</NavLink>
+        <NavLink to="/opportunities">Create an Opportunity</NavLink>
+      </>
     );
   } else {
     sessionLinks = (

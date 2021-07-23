@@ -37,7 +37,7 @@ const opportunityNotFoundError = () => {
 router.get(
     '/',
     asyncHandler(async (req, res, next) => {
-        const opportunities = await Opportunity.findAll(req.params, {
+        const opportunities = await Opportunity.findAll({ include: {all: true}}, req.params, {
         })
         //opportunities is an array of opportunity objects
 

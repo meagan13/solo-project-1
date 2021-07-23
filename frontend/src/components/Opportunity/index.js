@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useImperativeHandle } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import './Opportunity.css';
 import { getOpportunities, editOpp, removeOpp } from '../../store/opportunity';
 import { createSignup } from '../../store/oppSignup';
+import { getUsers } from '../../store/user';
 
 function Opportunity() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const session = useSelector(state => state.session);
+    const state = useSelector(state => state)
     const history = useHistory();
+    const userTest = useSelector(state => state.user)
 
     const { id } = useParams();
 
@@ -16,12 +20,22 @@ function Opportunity() {
     const opportunities = useSelector(state => {
         return state.opportunity;
     });
+
     const signups = useSelector(state => {
         return state.signup;
     });
 
-    console.log("oppssss:", opportunities)
-    console.log("state.session:", signups)
+    //grab the users out of the store
+    const users = useSelector(state => {
+        return state.user;
+    })
+
+    console.log("user test:", userTest)
+    console.log("state:", state)
+    console.log('session:', session)
+    console.log('id:', id)
+    console.log('users:', users)
+
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store
     useEffect(() => {
@@ -29,8 +43,16 @@ function Opportunity() {
         dispatch(getOpportunities())
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(getUsers())
+    }, [dispatch])
+
+
     let opportunity = opportunities[id]
     // let signup = signups[id]
+    let user = users[opportunity.nonprofitId]
+
+    console.log('user:', user)
 
     // const [oppName, setOppName] = useState('');
     // const [oppDate, setOppDate] = useState('');
@@ -41,6 +63,7 @@ function Opportunity() {
     const [category, setCategory] = useState(opportunity?.category);
     const [oppId, setOppId] = useState(Number(id));
     const [userId, setUserId] = useState(sessionUser.id);
+    const [username, setUsername] = useState(opportunity?.nonprofitId);
 
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);
@@ -103,7 +126,8 @@ function Opportunity() {
         <>
             <div className='opportunity'>
                 <h2>Opportunity: { opportunity?.oppName }</h2>
-                <h3>Submitted by: { sessionUser?.username }</h3>
+                <h3>Submitted by: { opportunity?.nonprofitId }</h3>
+                {/* <h3>Test submitted by: { user?.username }</h3> */}
                 <h3>Opportunity Date: { (`${opportunity?.oppDate}`).slice(0, 10) }</h3>
             </div>
             <div className='edited-opportunity'>

@@ -4,12 +4,14 @@ import sessionReducer from './session';
 import opportunityReducer from "./opportunity";
 import signupReducer from "./oppSignup";
 import locationReducer from "./locations";
+import userReducer from "./user";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   opportunity: opportunityReducer,
   signup: signupReducer,
   location: locationReducer,
+  user: userReducer,
 });
 
 let enhancer;

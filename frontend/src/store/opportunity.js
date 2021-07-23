@@ -1,5 +1,6 @@
 import { csrfFetch } from './csrf';
 
+const GET_ONE = 'opportunity/getOneOpp';
 const CREATE_OPP = 'opportunity/createOpportunity';
 const LOAD = 'opportunities/load';
 const EDIT = 'opportunities/edit';
@@ -30,6 +31,13 @@ const edit = (opportunity) => {
 const remove = (opportunity) => {
     return {
         type: REMOVE_OPP,
+        opportunity
+    }
+}
+
+const loadOne = (opportunity) => {
+    return {
+        type: GET_ONE,
         opportunity
     }
 }
@@ -95,6 +103,19 @@ export const removeOpp = (payload) => async dispatch => {
     return oppToDelete;
 }
 
+export const getOneOpp = (id) => async dispatch => {
+    const res = await csrfFetch(`/api/opportunities/${ id }`)
+
+    const oneOpp = await res.json();
+
+    if(res.ok) {
+        dispatch(loadOne(oneOpp));
+    }
+
+    return oneOpp;
+
+}
+
 //const initialState = { opportunity:{}, likes:0 }
 const initialState = {};
 
@@ -133,6 +154,9 @@ const opportunityReducer = (state = initialState, action) => {
         case REMOVE_OPP: {
             delete newState[action.opportunity.id];
             return newState;
+        }
+        case GET_ONE: {
+            return action.opportunity;
         }
         default:
             return state;

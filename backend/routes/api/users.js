@@ -44,4 +44,16 @@ router.post(
     }),
 );
 
+router.get(
+  '/',
+  asyncHandler(async (req, res, next) => {
+    const users = await User.findAll({ include: {all: true}}, req.params, {
+    })
+
+    if(users) {
+      return res.json(users)
+    }
+  })
+)
+
 module.exports = router;

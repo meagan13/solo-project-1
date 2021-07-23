@@ -9,6 +9,7 @@ import './Profile.css';
 const ProfilePage = () => {
     //useSelector pulls data from the store, but we have to add it to the store with the Reducer first
     const sessionUser = useSelector(state => state.session);
+
     const signups = useSelector(state => {
         const userSignups = Object.values(state.signup).filter(signup => signup?.userId === sessionUser?.user.id)
         //can add .reverse
@@ -23,7 +24,6 @@ const ProfilePage = () => {
 
     const userOpportunitiesList = useSelector(state => {
 
-        //filter: for each match, display the name?
         const userOppsList = Object.values(state.opportunity).filter(opp => signupObj[opp.id])
 
         return userOppsList;

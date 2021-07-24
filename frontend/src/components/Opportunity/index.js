@@ -70,6 +70,13 @@ function Opportunity() {
     const [oppId, setOppId] = useState(Number(id));
     const [userId, setUserId] = useState(sessionUser.id);
     const [username, setUsername] = useState('');
+    const [showEdit, setShowEdit] = useState(false);
+
+    useEffect (() => {
+        if(sessionUser?.id === selectedOpportunity?.nonprofitId) {
+            setShowEdit(true);
+        }
+    })
 
     const updateOppName = (e) => setOppName(e.target.value);
     const updateOppDate = (e) => setOppDate(e.target.value);
@@ -136,57 +143,60 @@ function Opportunity() {
                 {/* <h3>Test submitted by: { user?.username }</h3> */}
                 <h3>Opportunity Date: { (`${selectedOpportunity?.oppDate}`).slice(0, 10) }</h3>
             </div>
-            <div className='edited-opportunity'>
-                <form onSubmit={ handleSubmit }>
-                    <div className='edit-input'>
-                        <input className='edit-name '
-                            type="text"
-                            placeholder="Opportunity Name"
-                            value={ oppName }
-                            onChange={ updateOppName }
-                        />
-                    </div>
 
-                    <br />
+            {showEdit && (
+                <div className='edited-opportunity'>
+                    <form onSubmit={ handleSubmit }>
+                        <div className='edit-input'>
+                            <input className='edit-name '
+                                type="text"
+                                placeholder="Opportunity Name"
+                                value={ oppName }
+                                onChange={ updateOppName }
+                            />
+                        </div>
 
-                    <div className='edit-input'>
-                        <input className='edit-date edit-input'
-                            type="date"
-                            placeholder="Date"
-                            value={ oppDate }
-                            onChange={ updateOppDate }
-                        />
-                    </div>
+                        <br />
 
-                    <br />
-                    <div className='edit-input'>
-                        <input className='edit-capacity edit-input'
-                            type="integer"
-                            placeholder="Capacity"
-                            value={ capacity }
-                            onChange={ updateCapacity }
-                        />
-                    </div>
+                        <div className='edit-input'>
+                            <input className='edit-date edit-input'
+                                type="date"
+                                placeholder="Date"
+                                value={ oppDate }
+                                onChange={ updateOppDate }
+                            />
+                        </div>
 
-                    <br />
+                        <br />
+                        <div className='edit-input'>
+                            <input className='edit-capacity edit-input'
+                                type="integer"
+                                placeholder="Capacity"
+                                value={ capacity }
+                                onChange={ updateCapacity }
+                            />
+                        </div>
 
-                    <button type="submit" className='edit-button button'>Edit Opportunity</button>
-                </form>
+                        <br />
 
-                <div className='delete-button-div button'>
-                    <form onSubmit={ handleDelete }>
-                        <button type="submit" className='delete-button button'>Delete Opportunity</button>
+                        <button type="submit" className='edit-button button'>Edit Opportunity</button>
                     </form>
+
+                    <div className='delete-button-div button'>
+                        <form onSubmit={ handleDelete }>
+                            <button type="submit" className='delete-button button'>Delete Opportunity</button>
+                        </form>
+                    </div>
+
+                    <div className='signup-button-div button'>
+
+                        <form onSubmit={ handleSignup }>
+                            <button type="submit" className='signup-button button'>Sign Up</button>
+                        </form>
+                    </div>
+
                 </div>
-
-                <div className='signup-button-div button'>
-
-                    <form onSubmit={ handleSignup }>
-                        <button type="submit" className='signup-button button'>Sign Up</button>
-                    </form>
-                </div>
-
-            </div>
+            )}
         </>
     )
 }

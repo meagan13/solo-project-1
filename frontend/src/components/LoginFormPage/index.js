@@ -59,13 +59,6 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
-      <label
-        onClick={demoLogin}
-        id='demo-login__button'
-        className='modal__button'
-        type="submit"
-      >
-        Demo</label>
     </form>
   );
 }

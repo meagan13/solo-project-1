@@ -15,6 +15,16 @@ function LoginFormPage() {
     <Redirect to="/" />
   );
 
+  const demoLogin = () => {
+    const credential = 'NashvilleFoodProject'
+    const password = 'password'
+    return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -49,6 +59,13 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <label
+        onClick={demoLogin}
+        id='demo-login__button'
+        className='modal__button'
+        type="submit"
+      >
+        Demo</label>
     </form>
   );
 }

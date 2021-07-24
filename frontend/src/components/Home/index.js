@@ -19,6 +19,9 @@ const HomePage = () => {
         return oppsList;
     })
 
+    console.log("Home opps list:", opportunitiesList)
+    console.log("Type test:", opportunitiesList[0]?.Category.type)
+
     useEffect(() => {
         dispatch(getOpportunities())
     }, [dispatch])
@@ -36,23 +39,11 @@ const HomePage = () => {
                     <NavLink key={i} to={ `/opportunities/${ opportunity?.id }`}>
                         <div className={`opp-div-${ i } opp-div`}>
                             <h2>{ opportunity?.oppName }</h2>
-                            <p>Add Category Icon</p>
-                            {/* <p>{ category.id } </p> */}
+                            <h4>{ opportunitiesList[i]?.Category.type }</h4>
+                            
                         </div>
-                        {/* <div
-                            className={
-                                Number.parseInt(opportunityId) === opportunity.id
-                                    ? "nav-entry is-selected"
-                                    : "is-selected"
-                            }
-                        >
-                            <div>
-                                <div className="primary-text">{ opportunity.oppName }</div>
-                                <div className="secondary-text">{ opportunity.oppDate }</div>
-                            </div>
-                        </div> */}
                     </NavLink>
-                    )
+                )
                 )}
             </div>
         </>

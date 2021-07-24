@@ -31,14 +31,6 @@ const ProfilePage = () => {
 
     console.log("userOppList:", userOpportunitiesList)
 
-    // ?.filter(signup => signup.userId === sessionUser.id)
-//     const sessionUser = useSelector(state => state.session.user);
-
-//   const todos = useSelector(state => {
-//     return Object.values(state.todo).filter(td => td.userId === sessionUser?.id)
-//     .reverse();
-//   });
-
     const dispatch = useDispatch();
 
     useEffect(() => {

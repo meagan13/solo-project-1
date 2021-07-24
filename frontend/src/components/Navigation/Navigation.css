@@ -64,3 +64,8 @@ i {
     margin: 0px;
     float: right;
 }
+
+.logout-button {
+    float: right;
+    margin: 10px;
+}

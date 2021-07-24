@@ -143,13 +143,12 @@ function Opportunity() {
                 {/* <h3>Test submitted by: { user?.username }</h3> */}
                 <h3>Opportunity Date: { (`${selectedOpportunity?.oppDate}`).slice(0, 10) }</h3>
             </div>
-            
-            <div className='signup-button-div button'>
+                <div className='signup-button-div button'>
 
-                <form onSubmit={ handleSignup }>
-                    <button type="submit" className='signup-button button'>Sign Up</button>
-                </form>
-            </div>
+                    <form onSubmit={ handleSignup }>
+                        <button type="submit" className='signup-button button'>Sign Up</button>
+                    </form>
+                </div>
 
             {showEdit && (
                 <div className='edited-opportunity'>

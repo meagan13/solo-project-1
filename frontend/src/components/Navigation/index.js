@@ -38,7 +38,6 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div className="profile-opp-div">
         <div className="profile-div">
-          {/* <ProfileButton user={sessionUser} /> */}
           <NavLink to="/profile">Profile</NavLink>
         </div>
 

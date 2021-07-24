@@ -49,26 +49,11 @@ router.get(
     })
 )
 
-// router.get(
-//     '/:id',
-//     asyncHandler(async (req, res, next) => {
-
-//         const opportunity = await Opportunity.findByPk(req.params.id)
-
-//         if(opportunity) {
-//             return res.json({opportunity})
-//         } else {
-//             next(opportunityNotFoundError())
-//         }
-
-//     })
-// )
-
 router.get(
     '/:id',
     asyncHandler(async (req, res, next) => {
 
-        const opportunity = await Opportunity.findOne({ where: { id: req.params.id}, include: User })
+        const opportunity = await Opportunity.findOne({ where: { id: req.params.id}, include: {all: true} })
 
         if(opportunity) {
             return res.json({opportunity})

@@ -50,11 +50,18 @@ const ProfilePage = () => {
         return null;
     }
 
+    console.log(sessionUser.user);
+
     //map over the opportunities
     //if the userID matches the current user, list the opportunity
     return (
         <>
-            <h2>Welcome, { sessionUser.user.username }</h2>
+            <div>
+                {/* <h2 style={ {backgroundImage: `url(${sessionUser.user.imgUrl}`}}>Test Image</h2> */}
+                <h2>Welcome, { sessionUser.user.username }!</h2>
+            </div>
+            <img src={ sessionUser.user.imgUrl } alt='user photo' />
+            <p>{ sessionUser.user.email }</p>
             <h3>My Signups:</h3>
             <div className='user-opps'>
                 { userOpportunitiesList?.map((signup) => {

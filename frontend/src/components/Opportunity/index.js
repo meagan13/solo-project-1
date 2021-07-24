@@ -117,8 +117,20 @@ function Opportunity() {
         <>
             <div className='opportunity'>
                 <h2>Opportunity: { selectedOpportunity?.oppName }</h2>
-                <h3>Submitted by: { selectedOpportunity?.User.username }</h3>
-                <h3>Category Test: { selectedOpportunity?.categoryId }</h3>
+
+                { selectedOpportunity?.categoryId === 1 && (
+                    <h3>Volunteer</h3>
+                    )}
+
+                { selectedOpportunity?.categoryId === 2 && (
+                    <h3>Learn</h3>
+                    )}
+
+                { selectedOpportunity?.categoryId === 3 && (
+                    <h3>Advocate</h3>
+                    )}
+
+                <h3>Hosted by: { selectedOpportunity?.User.username }</h3>
                 <h3>Opportunity Date: { (`${selectedOpportunity?.oppDate}`).slice(0, 10) }</h3>
             </div>
                 <div className='signup-button-div button'>

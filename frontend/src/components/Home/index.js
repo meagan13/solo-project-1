@@ -6,6 +6,8 @@ import './Home.css';
 
 const HomePage = () => {
     // //useSelector gives us access to the store
+    const { id } = useParams();
+    const dispatch = useDispatch();
 
     const opportunitiesList = useSelector(state => {
         //console.log("State.opportunity:", state.opportunity)
@@ -16,8 +18,6 @@ const HomePage = () => {
         //return state.opportunity.oppsList.map(opportunityId => state.opportunity[opportunityId])
         return oppsList;
     })
-
-    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getOpportunities())

@@ -26,21 +26,12 @@ function Opportunity() {
     // });
 
     const selectedOpportunity = useSelector(state => state.opportunity.opportunity)
+    //const selectedCategory = useSelector(state => state.opportunity.opportunity.categoryId)
+
+    // console.log('selected opp test:', selectedOpportunity)
+    // console.log("selected category test:", selectedOpportunity?.categoryId)
 
     const oppObj = {};
-
-    // opportunities.forEach(opportunity => {
-    //     oppObj[opportunity?.id] = opportunity;
-    // })
-
-    // const userList = useSelector(state => {
-    //     const testVar = Object.values(state.user)
-    //     const findUserList = Object.values(state.user).filter(user => oppObj[user.id])
-
-    //     //return findUserList;
-
-    //     return testVar;
-    // })
 
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store
@@ -50,19 +41,6 @@ function Opportunity() {
         dispatch(getUsers())
     }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(getUsers())
-    // }, [dispatch])
-
-    // let signup = signups[id]
-    // let user = users[opportunity?.nonprofitId]
-
-    // console.log("user test in opp:", user)
-    // // console.log('user:', user)
-
-    // const [oppName, setOppName] = useState('');
-    // const [oppDate, setOppDate] = useState('');
-    // const [capacity, setCapacity] = useState(0);
     const [oppName, setOppName] = useState('');
     const [oppDate, setOppDate] = useState('');
     const [capacity, setCapacity] = useState('');
@@ -140,7 +118,7 @@ function Opportunity() {
             <div className='opportunity'>
                 <h2>Opportunity: { selectedOpportunity?.oppName }</h2>
                 <h3>Submitted by: { selectedOpportunity?.User.username }</h3>
-                {/* <h3>Test submitted by: { user?.username }</h3> */}
+                <h3>Category Test: { selectedOpportunity?.categoryId }</h3>
                 <h3>Opportunity Date: { (`${selectedOpportunity?.oppDate}`).slice(0, 10) }</h3>
             </div>
                 <div className='signup-button-div button'>

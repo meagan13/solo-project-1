@@ -69,17 +69,17 @@ router.post(
     );
 
 
-  //Login demo user
-  router.get(
-    '/demo',
-    restoreUser,
-    (req, res) => {
-      const user = { id: 18 };
-      if (user) {
-        return res.json({
-          user: user.toSafeObject()
-        });
-      } else return res.json({});
-    }
-  );
+  // //Login demo user
+  // router.get(
+  //   '/demo',
+  //   restoreUser,
+  //   (req, res) => {
+  //     const user = { id: 18 };
+  //     if (user) {
+  //       return res.json({
+  //         user: user.toSafeObject()
+  //       });
+  //     } else return res.json({});
+  //   }
+  // );
       module.exports = router;

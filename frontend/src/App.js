@@ -40,12 +40,6 @@ function App() {
           <Route path="/profile">
             <Profile />
           </Route>
-          {/* <Route exact path="/signups">
-            <OppSignup />
-          </Route>
-          <Route path="/locations">
-            <Locations />
-          </Route> */}
         </Switch>
       )}
     </>

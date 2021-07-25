@@ -37,7 +37,7 @@ function Opportunity() {
         dispatch(getOneOpp(id))
         dispatch(getSignups())
         dispatch(getUsers())
-    }, [dispatch, id])
+    }, [dispatch])
 
     const [oppName, setOppName] = useState('');
     const [oppDate, setOppDate] = useState('');

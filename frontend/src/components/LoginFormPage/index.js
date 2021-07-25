@@ -40,6 +40,7 @@ function LoginFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <h3>Please log in to register for opportunities:</h3>
       <label className='form-label'>
         Username or Email
         <input

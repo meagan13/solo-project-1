@@ -36,31 +36,49 @@ function LoginFormPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <h3>Please log in to register for opportunities:</h3>
-      <label className='form-label'>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label className='form-label'>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <div className="login-grid">
+      <div className="login-form-div1">
+        <div className="login-welcome">
+          <h3 className="welcome-message">Please log in to register for opportunities:</h3>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+
+
+          <div className="username-div">
+            <label className='form-label'>
+              Username or Email
+              <input
+                type="text"
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="password-div">
+            <label className='form-label'>
+              Password
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="login-button-div">
+            <button className="login-button" type="submit">Log In</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
   );
 }
 

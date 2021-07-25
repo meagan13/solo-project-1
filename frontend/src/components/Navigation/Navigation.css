@@ -65,7 +65,24 @@ i {
     float: right;
 }
 
-.logout-button {
+.logout-button-div {
     float: right;
     margin: 10px;
+    border-radius: 35px;;
+}
+
+.logout-button {
+    border-radius: 20px;
+    background-color: whitesmoke;
+    font-weight: bold;
+    color:rgb(40, 40, 99);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 15px 5px 15px;
+    border:none;
+
+}
+
+.logout-button:hover {
+    background-color: yellow;
+
 }

@@ -45,8 +45,8 @@ function Navigation({ isLoaded }){
           <NavLink to="/opportunities">Create an Opportunity</NavLink>
         </div>
 
-        <div className="logout-button">
-          <button onClick={logout}>Log Out</button>
+        <div className="logout-button-div">
+          <button className="logout-button" onClick={logout}>Log Out</button>
         </div>
 
 

@@ -47,21 +47,31 @@ const ProfilePage = () => {
     //map over the opportunities
     //if the userID matches the current user, list the opportunity
     return (
-        <>
-            <div>
+        <div className="profile-div-holder">
+            <div className="profile-welcome-div">
                 {/* <h2 style={ {backgroundImage: `url(${sessionUser.user.imgUrl}`}}>Test Image</h2> */}
-                <h2>Welcome, { sessionUser.user.username }!</h2>
+                <h2 className="text-headers">Welcome, { sessionUser.user.username }!</h2>
             </div>
-            <img src={ sessionUser.user.imgUrl } alt='user' />
-            <p>{ sessionUser.user.email }</p>
-            <h3>My Signups:</h3>
-            <div className='user-opps'>
+
+            <div className="user-photo-div">
+                <img className="user-photo" src={ sessionUser.user.imgUrl } alt='user' />
+            </div>
+
+            <div className="user-email-div">
+                <p>{ sessionUser.user.email }</p>
+            </div>
+
+            <div className="user-signups-header-div">
+                <h2 className="text-headers">My Signups:</h2>
+            </div>
+
+            <div className="user-opps">
                 { userOpportunitiesList?.map((signup) => {
 
-                return <li key={ signup.oppName }>{ signup.oppName }: { signup.oppDate }</li>
+                return <li className="user-opp-signup" key={ signup.oppName }>{ signup.oppName }: { (`${signup?.oppDate}`).slice(0, 10) }</li>
                 })}
             </div>
-        </>
+        </div>
     )
 }
 

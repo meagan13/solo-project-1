@@ -23,7 +23,7 @@
     min-width: 368px;
 }
 
-.form-label {
+.form-label, .signup-form-label {
     font-size: 20px;
     color: rgb(40, 40, 99);
     font-family: Arial, Helvetica, sans-serif;
@@ -34,7 +34,7 @@ h3 {
     color: rgb(40, 40, 99);
 }
 
-.password-div, .username-div {
+.password-div, .username-div, .email-div, .confirm-password-div {
     margin: 20px;
 }
 
@@ -43,7 +43,7 @@ h3 {
     border:solid rgb(40, 40, 99)
 }
 
-.login-button-div {
+.login-button-div, .signup-button-div {
     margin: 20px;
     grid-column-start: 2;
     grid-row-start: 2;
@@ -51,7 +51,7 @@ h3 {
 
 }
 
-.login-button {
+.login-button, .demo-button {
     border-radius: 20px;
     background-color: whitesmoke;
     font-weight: bold;

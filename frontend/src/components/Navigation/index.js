@@ -56,7 +56,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div className="login-signup-div">
         <div className='demo-div'>
-          <button onClick={demoLogin}>Demo</button>
+          <button className="demo-button" onClick={demoLogin}>Demo</button>
         </div>
         <div className='signup-div'>
         <NavLink to="/signup">Sign Up</NavLink>

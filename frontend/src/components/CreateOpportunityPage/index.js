@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './CreateOpportunity.css';
-import { createOpportunity, getOpportunities } from '../../store/opportunity';
+import { createOpportunity } from '../../store/opportunity';
 import { getLocations } from '../../store/locations';
 import { getUsers } from '../../store/user';
 
 function CreateOpportunityPage() {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const { id } = useParams();
+    // const { id } = useParams();
 
-    const opportunities = useSelector(state => {
-        return state.opportunity;
-    });
+    // const opportunities = useSelector(state => {
+    //     return state.opportunity;
+    // });
 
     const locations = useSelector(state => {
         return Object.values(state.location);
     })
 
-    const users = useSelector(state => {
-        return state.user;
-    })
+    // const users = useSelector(state => {
+    //     return state.user;
+    // })
 
     useEffect(() => {
         dispatch(getLocations())
@@ -31,8 +31,8 @@ function CreateOpportunityPage() {
         dispatch(getUsers())
     }, [dispatch])
 
-    let opportunity = opportunities[id]
-    let user = users[opportunity?.nonprofitId]
+    // let opportunity = opportunities[id]
+    // // let user = users[opportunity?.nonprofitId]
 
     const history = useHistory();
 
@@ -43,7 +43,7 @@ function CreateOpportunityPage() {
     const [oppDate, setOppDate] = useState('');
     const [capacity, setCapacity] = useState(0);
 
-    const updateNonprofitId = (e) => setNonprofitId(e.target.value);
+    // const updateNonprofitId = (e) => setNonprofitId(e.target.value);
     const updateLocationId = (e) => setLocationId(e.target.value);
     const updateCategoryId = (e) => setCategoryId(e.target.value);
     const updateOppName = (e) => setOppName(e.target.value);

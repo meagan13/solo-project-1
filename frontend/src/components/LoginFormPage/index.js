@@ -15,15 +15,15 @@ function LoginFormPage() {
     <Redirect to="/" />
   );
 
-  const demoLogin = () => {
-    const credential = 'NashvilleFoodProject'
-    const password = 'password'
-    return dispatch(sessionActions.login({ credential, password }))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
-  }
+  // const demoLogin = () => {
+  //   const credential = 'NashvilleFoodProject'
+  //   const password = 'password'
+  //   return dispatch(sessionActions.login({ credential, password }))
+  //     .catch(async (res) => {
+  //       const data = await res.json();
+  //       if (data && data.errors) setErrors(data.errors);
+  //     });
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();

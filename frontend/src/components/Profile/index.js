@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 //import { useParams } from 'react-router-dom';
 import { getOpportunities } from '../../store/opportunity';
@@ -29,7 +29,7 @@ const ProfilePage = () => {
         return userOppsList;
     })
 
-    console.log("userOppList:", userOpportunitiesList)
+    // console.log("userOppList:", userOpportunitiesList)
 
     const dispatch = useDispatch();
 
@@ -42,7 +42,7 @@ const ProfilePage = () => {
         return null;
     }
 
-    console.log(sessionUser.user);
+    // console.log(sessionUser.user);
 
     //map over the opportunities
     //if the userID matches the current user, list the opportunity
@@ -52,7 +52,7 @@ const ProfilePage = () => {
                 {/* <h2 style={ {backgroundImage: `url(${sessionUser.user.imgUrl}`}}>Test Image</h2> */}
                 <h2>Welcome, { sessionUser.user.username }!</h2>
             </div>
-            <img src={ sessionUser.user.imgUrl } alt='user photo' />
+            <img src={ sessionUser.user.imgUrl } alt='user' />
             <p>{ sessionUser.user.email }</p>
             <h3>My Signups:</h3>
             <div className='user-opps'>

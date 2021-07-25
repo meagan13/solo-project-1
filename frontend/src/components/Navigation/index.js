@@ -10,8 +10,8 @@ function Navigation({ isLoaded }){
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [credential, setCredential] = useState('');
-  const [password, setPassword] = useState('');
+  // const [credential, setCredential] = useState('');
+  // const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   //console.log(sessionUser);

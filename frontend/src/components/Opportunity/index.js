@@ -14,10 +14,10 @@ function Opportunity() {
     //grab data from the store
     const sessionUser = useSelector(state => state.session.user);
 
-    const users = useSelector(state => {
-        const usersArr = Object.values(state.user);
-        return usersArr;
-    })
+    // const users = useSelector(state => {
+    //     const usersArr = Object.values(state.user);
+    //     return usersArr;
+    // })
 
     //find the users.username that "matches" the opportunities.nonprofitId
     // const opportunities = useSelector(state => {
@@ -31,15 +31,13 @@ function Opportunity() {
     // console.log('selected opp test:', selectedOpportunity)
     // console.log("selected category test:", selectedOpportunity?.categoryId)
 
-    const oppObj = {};
-
     //set up useEffect to get all opportunities into the store
     //useEffect listens for the first change and then loads into the store
     useEffect(() => {
         dispatch(getOneOpp(id))
         dispatch(getSignups())
         dispatch(getUsers())
-    }, [dispatch])
+    }, [dispatch, id])
 
     const [oppName, setOppName] = useState('');
     const [oppDate, setOppDate] = useState('');
@@ -47,9 +45,10 @@ function Opportunity() {
     const [category, setCategory] = useState('');
     const [oppId, setOppId] = useState(Number(id));
     const [userId, setUserId] = useState(sessionUser.id);
-    const [username, setUsername] = useState('');
+    // const [username, setUsername] = useState('');
     const [showEdit, setShowEdit] = useState(false);
 
+    //need to add something to dependency array??
     useEffect (() => {
         if(sessionUser?.id === selectedOpportunity?.nonprofitId) {
             setShowEdit(true);

@@ -22,7 +22,7 @@ export const getUsers = () => async dispatch => {
 const initialState = {};
 
 const userReducer = (state = initialState, action) => {
-    let newState = { ...state };
+    // let newState = { ...state };
 
     switch(action.type) {
         case LOAD: {

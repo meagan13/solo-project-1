@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getOpportunities } from '../../store/opportunity';
 import './Home.css';
 
 const HomePage = () => {
     // //useSelector gives us access to the store
-    const { id } = useParams();
+    // const { id } = useParams();
     const dispatch = useDispatch();
 
     const opportunitiesList = useSelector(state => {
@@ -19,8 +19,8 @@ const HomePage = () => {
         return oppsList;
     })
 
-    console.log("Home opps list:", opportunitiesList)
-    console.log("Type test:", opportunitiesList[0]?.Category.type)
+    // console.log("Home opps list:", opportunitiesList)
+    // console.log("Type test:", opportunitiesList[0]?.Category.type)
 
     useEffect(() => {
         dispatch(getOpportunities())
@@ -39,8 +39,8 @@ const HomePage = () => {
                     <NavLink key={i} to={ `/opportunities/${ opportunity?.id }`}>
                         <div className={`opp-div-${ i } opp-div`}>
                             <h2>{ opportunity?.oppName }</h2>
-                            <h4>{ opportunitiesList[i]?.Category.type }</h4>
-                            
+                            <h4>{ opportunitiesList[i]?.Category?.type }</h4>
+
                         </div>
                     </NavLink>
                 )

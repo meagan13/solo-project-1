@@ -13,21 +13,11 @@ function Opportunity() {
 
     //grab data from the store
     const sessionUser = useSelector(state => state.session.user);
-
-    // const users = useSelector(state => {
-    //     const usersArr = Object.values(state.user);
-    //     return usersArr;
-    // })
-
-    //find the users.username that "matches" the opportunities.nonprofitId
-    // const opportunities = useSelector(state => {
-    //     const oppsArr = Object.values(state.opportunity).filter(opportunity => opportunity?.nonprofitId === 3)
-    //     return oppsArr;
-    // });
-
     const selectedOpportunity = useSelector(state => state.opportunity.opportunity)
-    //const selectedCategory = useSelector(state => state.opportunity.opportunity.categoryId)
 
+    if(!sessionUser) {
+        history.push('/login')
+    }
     // console.log('selected opp test:', selectedOpportunity)
     // console.log("selected category test:", selectedOpportunity?.categoryId)
 
@@ -44,7 +34,7 @@ function Opportunity() {
     const [capacity, setCapacity] = useState('');
     const [category, setCategory] = useState('');
     const [oppId, setOppId] = useState(Number(id));
-    const [userId, setUserId] = useState(sessionUser.id);
+    const [userId, setUserId] = useState(sessionUser?.id);
     // const [username, setUsername] = useState('');
     const [showEdit, setShowEdit] = useState(false);
 

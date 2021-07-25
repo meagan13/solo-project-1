@@ -50,7 +50,7 @@ function LoginFormPage() {
 
           <div className="username-div">
             <label className='form-label'>
-              Username or Email
+              Username
               <input
                 type="text"
                 value={credential}

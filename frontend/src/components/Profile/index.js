@@ -58,7 +58,7 @@ const ProfilePage = () => {
             <div className='user-opps'>
                 { userOpportunitiesList?.map((signup) => {
 
-                return <li key={ signup.oppName }>{ signup.oppName }</li>
+                return <li key={ signup.oppName }>{ signup.oppName }: { signup.oppDate }</li>
                 })}
             </div>
         </>

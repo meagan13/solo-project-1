@@ -1,6 +1,8 @@
 # VolunteerBrite
 VolunteerBrite is an EventBrite clone app that allows users to access volunteer, education, and advocacy oporutnities, with a particular focus on nonprofits located in west Nashville, TN. VolunteerBrite was created using Sequelize, Express, React, and Redux.
 
+https://soloproject13.herokuapp.com/
+
 All users may:
 * View available opportunities and their corresponding categories (volunteer, learn, or advocate)
 * Navigate to a specific opportunity page

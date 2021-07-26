@@ -125,7 +125,7 @@ function Opportunity() {
                 <div className='signup-button-div button'>
 
                     <form onSubmit={ handleSignup }>
-                        <button type="submit" className='signup-button button'>Sign Up</button>
+                        <button type="submit" className='signup-button demo-button'>Sign Up</button>
                     </form>
                 </div>
 
@@ -164,12 +164,12 @@ function Opportunity() {
 
                         <br />
 
-                        <button type="submit" className='edit-button button'>Edit Opportunity</button>
+                        <button type="submit" className='edit-button demo-button'>Edit Opportunity</button>
                     </form>
 
                     <div className='delete-button-div button'>
                         <form onSubmit={ handleDelete }>
-                            <button type="submit" className='delete-button button'>Delete Opportunity</button>
+                            <button type="submit" className='delete-button demo-button'>Delete Opportunity</button>
                         </form>
                     </div>
 

@@ -139,7 +139,7 @@ function CreateOpportunityPage() {
                     </div>
 
                     <div className='submit-opp-button'>
-                        <button type="submit">Submit</button>
+                        <button className='demo-button' type="submit">Submit</button>
                     </div>
                 </form>
             </div>

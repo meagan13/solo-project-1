@@ -59,6 +59,7 @@
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px 15px 5px 15px;
     border: solid 1px rgb(40, 40, 99);
+    margin: 5px;
 }
 
 .login-button:hover {

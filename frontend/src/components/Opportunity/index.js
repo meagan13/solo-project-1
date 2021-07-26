@@ -103,7 +103,7 @@ function Opportunity() {
     }
 
     return (
-        <>
+        <div className='single-opp-div'>
             <div className='opportunity'>
                 <h2>Opportunity: { selectedOpportunity?.oppName }</h2>
 
@@ -176,7 +176,7 @@ function Opportunity() {
 
                 </div>
             )}
-        </>
+        </div>
     )
 }
 

@@ -17,7 +17,6 @@
     text-overflow: scroll;
 }
 
-.button {
-    padding: 5px;
-    border-radius: 3px;
+.single-opp-div {
+    margin: 15px;
 }

@@ -34,7 +34,7 @@ The navigation bar remains at the top of the page even as users visit different 
 Users are able to register for an account, or they can log into an existing account. Certain features can only be accessed by users who are registered and logged in. VolunteerBrite uses Express-Validator and Bcryptjs to ensure that passwords are hashed before being stored in the database.
 
 ## Home Page
-The home page displays all available opportunities, and each inidividual opportunity on the home page displays its category. 
+The home page displays all available opportunities, and each individual opportunity on the home page displays its category. 
 
 ## Individual Opportunity and Opportunity Signup Page
 Each opportunity on the VolunteerBrite home page links to an individual opportunity page where logged-in users can signup for that opportunity. If the logged-in user created that opportunity, they will be authorized to edit or delete that opportunity, as well.
